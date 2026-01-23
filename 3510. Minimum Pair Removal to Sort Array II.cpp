@@ -39,13 +39,11 @@ here subcase can be appeared like ki jo new element hai as a sum wo apne aage wa
 */
 
 //code
-
 using ll = long long;
 class Solution {
 public:
       int minimumPairRemoval(vector<int>& nums) {
         int n = nums.size();
-
         //{a, b, c, d} --> {a, b+c, d}
         vector<ll> temp(n);
         for(int i = 0; i < n; i++)
@@ -74,7 +72,6 @@ public:
         while(badPairs > 0) {
             int first  = minPairSet.begin()->second;
             int second = nextIndex[first];
-
             int first_left   = prevIndex[first];
             int second_right = nextIndex[second];
 
@@ -123,13 +120,10 @@ public:
                 minPairSet.insert({temp[first] + temp[second] + temp[second_right], first});
                 prevIndex[second_right] = first;
             }
-
             nextIndex[first] = second_right;
             temp[first] += temp[second];
-
             operations++;
         }
-
         return operations;
     }
 };
